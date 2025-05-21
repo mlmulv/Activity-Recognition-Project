@@ -6,17 +6,17 @@ import glob
 def preprocess(opt = True, windowSize = 5, testSize = 0.25):
     """
     Inputs:
-        opt - if true you want the data to be filtered by moving average (default is true)
+    opt - if true you want the data to be filtered by moving average (default is true)
         windowSize - size of the window for the moving average (default is 5)
         testSize - the percentage of samples dedicated to the test group (default is 0.25)
 
     Outputs:
-        X_train - x,y,z accelerometer data for train set
-        X_test - x,y,z accelerometer data for test set
-        y_train - class labels for train set
-        y_test - class labels for test set
-        
+    X_train - x,y,z accelerometer data for train set
+    X_test - x,y,z accelerometer data for test set
+    y_train - class labels for train set
+    y_test - class labels for test set 
     """
+    
     # Define the base directory for data relative to the script location
     base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'data'))
     
@@ -26,25 +26,24 @@ def preprocess(opt = True, windowSize = 5, testSize = 0.25):
         'walk': os.path.join(base_dir, 'walk'),
         'stand': os.path.join(base_dir, 'stand')
     }
+    
     # Initialize a list to hold all data
     data = []
 
     for activity, dir_path in activity_dirs.items():
         file_list = glob.glob(os.path.join(dir_path, '*.csv'))
         for file_path in file_list:
-            # Load each CSV into a DataFrame
+            # Load each CSV into a dataframe
             df = pd.read_csv(file_path)
 
-            # Add an activity label column
+            # Add a class label column
             df['class'] = activity
             
             # Append to the list
             data.append(df)
     
-    # Combine all DataFrames into one DataFrame
+    # Combine all dataframes into one dataframe
     df = pd.concat(data, ignore_index=True)
-
-    # Remove nan values if they exist
 
     # Rename columns to desired feature names
     df.rename(columns={
@@ -57,12 +56,13 @@ def preprocess(opt = True, windowSize = 5, testSize = 0.25):
     if opt:
         df[['xAcc', 'yAcc', 'zAcc']] = df[['xAcc', 'yAcc', 'zAcc']].rolling(window=windowSize).mean()
 
-    #converting to integers for classes
+    # Converting to integers for classes
     label_mapping = {
         'stand': 0,
         'walk': 1,
         'run': 2
     }
+    
     df['class'] = df['class'].map(label_mapping)
     
     # Remove nan rows if necessary
