@@ -1,43 +1,61 @@
 from hmmlearn import hmm
 
-def train(features, hiddenStates = 5, numItt = 500):
-    """
-    Inputs:
-        features - training data used for the HMM model (numpy array)
-        
-    """
+class HMM:
+    def __init__(self, 
+                 trainFeatures,
+                 trainLabels,
+                 testFeatures,
+                 hiddenStates = 4, 
+                 numItt = 100):
 
-    model = hmm.GaussianHMM(n_components=hiddenStates, covariance_type='full', n_iter=numItt)
-    model.fit(features)
+        self.trainFeatures = trainFeatures
+        self.trainLabels = trainLabels
+        self.testFeatures = testFeatures
+        self.hiddenStates = hiddenStates
+        self.numItt = 100
+
+    def train(self, features):
+        """
+        Inputs:
+            features - training data used for the HMM model (numpy array)
+        
+        """
     
-    return model
+        model = hmm.GaussianHMM(n_components=self.hiddenStates, covariance_type='full', n_iter=self.numItt)
+        model.fit(features)
 
-def logLikelihood(model, observation):
-    # Wrap observation in sequence format
-    log_likelihood = model.score(observation.reshape(1, -1))
-    return log_likelihood
+        return model
 
-def test(featStand, featWalk, featRun, featTest):
+    @staticmethod
+    def logLikelihood(model, observation):
+        log_likelihood = model.score(observation.reshape(1, -1))
+        return log_likelihood
 
-    modelStand = train(featStand)
-    modelWalk = train(featWalk)
-    modelRun = train(featRun)
-
-    predLabels = []
+    def test(self):
+        featStand = self.trainFeatures[self.trainLabels == 0].values
+        featWalk = self.trainFeatures[self.trainLabels == 1].values
+        featRun = self.trainFeatures[self.trainLabels == 2].values
+        featTest = self.testFeatures.values
+        
+        modelStand = self.train(featStand)
+        modelWalk = self.train(featWalk)
+        modelRun = self.train(featRun)
     
-    for i in range(len(featTest)):
-        obs = featTest[i]
-        ll_stand = logLikelihood(modelStand, obs)
-        ll_walk = logLikelihood(modelWalk, obs)
-        ll_run = logLikelihood(modelRun, obs)
+        predLabels = []
         
-        # Choose the activity with the highest likelihood
-        likelihoods = {
-            0: ll_stand,
-            1: ll_walk,
-            2: ll_run
-        }
-        
-        predLabels.append(max(likelihoods, key=likelihoods.get))
-
-    return predLabels
+        for i in range(len(featTest)):
+            obs = featTest[i]
+            ll_stand = self.logLikelihood(modelStand, obs)
+            ll_walk = self.logLikelihood(modelWalk, obs)
+            ll_run = self.logLikelihood(modelRun, obs)
+            
+            # Choose the activity with the highest likelihood
+            likelihoods = {
+                0: ll_stand,
+                1: ll_walk,
+                2: ll_run
+            }
+            
+            predLabels.append(max(likelihoods, key=likelihoods.get))
+    
+        return predLabels
