@@ -1,6 +1,6 @@
 from hmmlearn import hmm
 
-def train(features, hiddenStates = 6, numItt = 500):
+def train(features, hiddenStates = 5, numItt = 500):
     """
     Inputs:
         features - training data used for the HMM model (numpy array)
