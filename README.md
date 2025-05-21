@@ -77,7 +77,7 @@ This project was done using Anaconda for python packet managment. If you have no
 <!-- USAGE -->
 ### Usage
 
-Within the *Acitivity-Recognition-Project.ipynb* file, I train and test Activity Recognition Classifier with the given data I collected. I use default values as defined within the src/ directory, but the values are module. The results of the classifier are displayed within the file.
+Within the *Acitivity-Recognition-Project.ipynb* file, I train and test Activity Recognition Classifier with the given data I collected. I use default parameters as defined within the src/ directory, but the parameters are modular. The results of the classifier are displayed within the file.
 	
 
 <!-- Authors -->
