@@ -60,9 +60,11 @@ Activity-Recognition-Project/
 
 This project was done using Anaconda for python packet managment. If you have not installed Anaconda, go to https://www.anaconda.com/download
 
-* Create a conda environment with the *requirements.txt* file
+* Create a conda environment with the *requirements.txt* file in the same directory where the git repo is cloned.
    ```sh
-   conda create --name <env> --file <requirements.txt>
+   conda create --name activityRecognition --file requirements.txt
+   conda activate activityRecognition
+   pip install hmmlearn==0.3.3
 
    ```
 <!-- USAGE -->
