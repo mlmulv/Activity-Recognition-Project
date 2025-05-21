@@ -67,6 +67,12 @@ This project was done using Anaconda for python packet managment. If you have no
    pip install hmmlearn==0.3.3
 
    ```
+* Open a notebook
+   ```sh
+  python -m notebook
+
+   ```
+   
 <!-- USAGE -->
 ### Usage
 
