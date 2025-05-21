@@ -36,6 +36,7 @@ This project is a sequence classification project to identify if an individual i
 
 Here is the format of the project files:
 
+```
 Activity-Recognition-Project/
 ├── Activity-Recognition-Project.ipynb
 ├── README.md
@@ -45,14 +46,15 @@ Activity-Recognition-Project/
 │   └── HMM.py
 └── data/
     ├── run/
-    │   ├── run_1.csv 
+    │   ├── run_1.csv
     │   └── run_2.csv
     ├── stand/
-    │   ├── stand_1.csv 
+    │   ├── stand_1.csv
     │   └── stand_2.csv
-    ├── walk/
-    │   ├── walk_1.csv 
-    │   └── walk_2.csv
+    └── walk/
+        ├── walk_1.csv
+        └── walk_2.csv
+```
 
 ### Dependencies
 
@@ -64,6 +66,7 @@ This project was done using Anaconda for python packet managment. If you have no
 
    ```
 <!-- USAGE -->
+#Usage
 
 Within the *Acitivity-Recognition-Project.ipynb* file, I train and test Activity Recognition Classifier with the given data I collected. I use default values as defined within the src/ directory, but the values are module. The results of the classifier are displayed within the file.
 	
