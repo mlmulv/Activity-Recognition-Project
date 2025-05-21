@@ -8,6 +8,7 @@
       <a href="#getting-started">Getting Started</a>
       <ul>
         <li><a href="#installation">Installation</a></li>
+	<li><a href="#format">Format</a></li>
 	<li><a href="#dependencies">Dependencies</a></li>
       </ul>
     </li>
@@ -31,7 +32,7 @@ This project is a sequence classification project to identify if an individual i
    git clone https://github.com/mlmulv/Activity-Recognition-Project.git
 
    ```
-
+<!-- FORMAT -->
 ### Format 
 
 Here is the format of the project files:
