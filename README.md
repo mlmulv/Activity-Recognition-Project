@@ -41,9 +41,9 @@ Here is the format of the project files:
 Activity-Recognition-Project/
 ├── Activity-Recognition-Project.ipynb
 ├── README.md
-├── requirements.text
+├── environment.yml
 ├── src/
-│   └── preprocessing.py
+│   ├── preprocessing.py
 │   └── HMM.py
 └── data/
     ├── run/
@@ -59,14 +59,14 @@ Activity-Recognition-Project/
 
 ### Dependencies
 
-This project was done using Anaconda for python packet managment. If you have not installed Anaconda, go to https://www.anaconda.com/download
+This project was done using Anaconda for python packet management. If you have not installed Anaconda, go to https://www.anaconda.com/download
 
-* Create a conda environment with the *requirements.txt* file in the same directory where the git repo is cloned.
+Run the following lines of code below within the Anaconda Prompt or Command Prompt if you have Anaconda configured on it.
+
+* Create a conda environment with the *environment.yml* file in the same directory where the git repo is cloned.
    ```sh
-   conda create --name activityRecognition --file requirements.txt
+   conda env create -f environment.yml
    conda activate activityRecognition
-   pip install hmmlearn==0.3.3
-
    ```
 * Open a notebook
    ```sh
