@@ -13,6 +13,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#usage">Completion</a></li>
     <li><a href="#authors">Authors</a></li>
   </ol>
 </details>
@@ -79,6 +80,15 @@ Run the following lines of code below within the Anaconda Prompt or Command Prom
 
 Within the *Acitivity-Recognition-Project.ipynb* file, I train and test Activity Recognition Classifier with the given data I collected. I use default parameters as defined within the src/ directory, but the parameters are modular. The results of the classifier are displayed within the file.
 	
+<!-- COMPLETION -->
+### Completion
+
+Once you are done tinkering and analyzing the code. You can remove the conda environment if you wish to save space on your system.
+
+```sh
+conda deactivate
+conda remove --name activityRecognition --all   
+```
 
 <!-- Authors -->
 ## Authors
