@@ -43,6 +43,7 @@ Activity-Recognition-Project/
 ├── Activity-Recognition-Project.ipynb
 ├── README.md
 ├── environment.yml
+├── .gitignore
 ├── src/
 │   ├── preprocessing.py
 │   └── HMM.py
