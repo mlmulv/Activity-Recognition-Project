@@ -66,7 +66,7 @@ This project was done using Anaconda for python packet management. If you have n
 
 Run the following lines of code below within the Anaconda Prompt or Command Prompt if you have Anaconda configured on it.
 
-* Create a conda environment with the *environment.yml* file in the same directory where the git repo is cloned.
+* Create a conda environment with the *environment.yml* file within the Activity-Recognition-Project directory. *If you do not follow this step, conda won't be able to find the enviornment.yml file*.
    ```sh
    conda env create -f environment.yml
    conda activate activityRecognition
