@@ -7,12 +7,16 @@ class HMM:
                  trainFeatures,
                  trainLabels,
                  testFeatures,
+                 randomState,
+                 classProb,
                  hiddenStates = 4, 
                  numItt = 150):
 
         self.trainFeatures = trainFeatures
         self.trainLabels = trainLabels
         self.testFeatures = testFeatures
+        self.randomState = randomState
+        self.classProb = classProb
         self.hiddenStates = hiddenStates
         self.numItt = numItt
 
@@ -22,30 +26,31 @@ class HMM:
            
         Inputs:
         features - training data used for the HMM model (numpy array)
+        randomState - the random state to keep same initialization of variables within the model initialization
         hiddenStates - number of hidden states used for the HMM model (default of 4)
         numItt - number of iterations used for training the HMM model (default of 100)
 
         Outputs:
         model - trained HMM model (hmm object)
         """
-    
-        model = hmm.GaussianHMM(n_components=self.hiddenStates, covariance_type='full', n_iter=self.numItt)
+        model = hmm.GaussianHMM(n_components=self.hiddenStates, covariance_type='full', n_iter=self.numItt, random_state = self.randomState)
         model.fit(features) 
         return model
 
     @staticmethod
-    def logLikelihood(model, observation):
+    def logLikelihood(model, observation, prior):
         """
         Description: Helper function to calculate the Log Likelihood of a given observation for a HMM model
 
         Inputs:
             model - hmm model object
             observation - the observation at a given instance
+            prior - prior distribution of the class
 
         Outputs:
             log_likelihood - calculated log likelihood 
         """
-        log_likelihood = model.score(observation.reshape(1, -1))
+        log_likelihood = model.score(observation.reshape(1, -1)) + prior
         return log_likelihood
 
     def test(self):
@@ -76,9 +81,9 @@ class HMM:
             obs = featTest[i]
 
             # Calculate log likelihoods
-            ll_stand = self.logLikelihood(modelStand, obs)
-            ll_walk = self.logLikelihood(modelWalk, obs)
-            ll_run = self.logLikelihood(modelRun, obs)
+            ll_stand = self.logLikelihood(modelStand, obs, self.classProb[0])
+            ll_walk = self.logLikelihood(modelWalk, obs, self.classProb[1])
+            ll_run = self.logLikelihood(modelRun, obs, self.classProb[2])
             
             # Choose the activity with the highest likelihood
             likelihoods = {
