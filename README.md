@@ -44,6 +44,7 @@ Activity-Recognition-Project/
 ├── README.md
 ├── environment.yml
 ├── .gitignore
+├── Activity-Recognition-Report.pdf
 ├── src/
 │   ├── preprocessing.py
 │   └── HMM.py
@@ -79,7 +80,9 @@ Run the following lines of code below within the Anaconda Prompt or Command Prom
 <!-- USAGE -->
 ### Usage
 
-Within the *Acitivity-Recognition-Project.ipynb* file, I train and test Activity Recognition Classifier with the given data I collected. I use default parameters as defined within the src/ directory, but the parameters are modular. The results of the classifier are displayed within the file.
+Within the *Acitivity-Recognition-Project.ipynb* file, I conduct data preprocessing, data visualization, training our HMM, and testing our trained modal. I use default parameters as defined within the src/ directory, but the parameters are modular. The results of the classifier are displayed within the file.
+
+The functions and classes used in are documented in *Acitivity-Recognition-Project.ipynb* are documented accordingly in the *src/*.
 	
 <!-- COMPLETION -->
 ### Completion
