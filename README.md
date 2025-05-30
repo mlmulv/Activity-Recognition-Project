@@ -28,10 +28,10 @@ This project is a sequence classification project to identify if an individual i
 
 ### Installation
 
-*  Clone the repo
+*  Clone the repo and move into the directory
    ```sh
    git clone https://github.com/mlmulv/Activity-Recognition-Project.git
-
+   cd Activity-Recognition-Project
    ```
 <!-- FORMAT -->
 ### Format 
